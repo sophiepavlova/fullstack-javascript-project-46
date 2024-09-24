@@ -1,6 +1,5 @@
 import * as fs from 'node:fs';
 import * as path  from 'node:path';
-import { cwd } from 'node:process';
 import yaml from 'js-yaml';
 
 export const fileParse = (filePath) => {
