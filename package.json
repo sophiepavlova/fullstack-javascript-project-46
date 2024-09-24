@@ -20,6 +20,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.1",
     "esbuild": "^0.24.0",
     "esbuild-jest": "^0.5.0",
     "eslint": "^9.11.0",

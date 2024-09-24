@@ -51,11 +51,7 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install
-      - name: Run coverage
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          npm run coverage 
       - name: Upload coverage to Code Climate
-        run: |
-          npx codeclimate-test-reporter after-build --exit-code $?
+        env:
+          CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+        run: npx codeclimate-test-reporter upload
