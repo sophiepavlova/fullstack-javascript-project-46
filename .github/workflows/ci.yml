@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '22'  # Specify your version here
+          node-version: '22'
       - name: Clean npm cache
         run: npm cache clean --force
       - name: Install dependencies
@@ -34,8 +34,28 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '22'  # Specify your version here
+          node-version: '22'
       - name: Install dependencies
         run: npm install
       - name: Run tests
         run: npm test
+
+  coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install
+      - name: Run coverage
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: |
+          npm run coverage 
+      - name: Upload coverage to Code Climate
+        run: |
+          npx codeclimate-test-reporter after-build --exit-code $?

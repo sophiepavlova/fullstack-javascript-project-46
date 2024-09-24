@@ -9,7 +9,8 @@
   "main": "bin/gendiff.js",
   "scripts": {
     "test": "npx jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "coverage": "jest --coverage"
   },
   "author": "Pavlova Olga",
   "license": "ISC",
