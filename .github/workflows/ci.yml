@@ -16,13 +16,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '22'  # Specify your version here
+          node-version: '22'
       - name: Clean npm cache
         run: npm cache clean --force
       - name: Install dependencies
         run: npm install
       - name: List installed packages
-        run: npm list --depth=0  # Lists top-level packages
+        run: npm list --depth=0
       - name: Run linter
         run: npx eslint .
 
@@ -42,10 +42,9 @@ jobs:
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
+      - name: Format coverage
+        run: ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json ./coverage/lcov.info
       - name: Upload coverage to CodeClimate
-        run: |
-          ./cc-test-reporter before-build
-          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.<unique-id>.json ./coverage/lcov.info
-          ./cc-test-reporter upload-coverage
+        run: ./cc-test-reporter upload-coverage
         env:
           CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
