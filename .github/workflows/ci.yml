@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '22'
+          node-version: '22'  # Specify your version here
       - name: Clean npm cache
         run: npm cache clean --force
       - name: Install dependencies
@@ -28,7 +28,6 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: lint
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js
@@ -37,21 +36,16 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install
-      - name: Run tests
-        run: npm test
-
-  coverage:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '22'
-      - name: Install dependencies
-        run: npm install
-      - name: Upload coverage to Code Climate
+      - name: Run tests and collect coverage
+        run: npm test -- --coverage
+      - name: Download CodeClimate reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+      - name: Upload coverage to CodeClimate
+        run: |
+          ./cc-test-reporter before-build
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.<unique-id>.json ./coverage/lcov.info
+          ./cc-test-reporter upload-coverage
         env:
           CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-        run: npx codeclimate-test-reporter upload

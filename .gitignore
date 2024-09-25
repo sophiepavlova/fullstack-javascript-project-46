@@ -3,3 +3,5 @@ node_modules
 my.js
 my-hello.js
 demo.cast
+cc-test-reporter
+coverage/
