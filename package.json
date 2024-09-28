@@ -4,13 +4,14 @@
   "description": "[![Actions Status](https://github.com/sophiepavlova/fullstack-javascript-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sophiepavlova/fullstack-javascript-project-46/actions)",
   "type": "module",
   "bin": {
-    "gendiff": "./bin/gendiff.js"
+     "gendiff": "./bin/gendiff-cli.js"
   },
   "main": "bin/gendiff.js",
   "scripts": {
     "test": "npx jest",
     "lint": "eslint .",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "gendiff": "node ./bin/gendiff-cli.js"
   },
   "author": "Pavlova Olga",
   "license": "ISC",
