@@ -1,5 +1,6 @@
 import { gendiff } from '../bin/gendiff.js';
 import path from 'node:path';
+import { stylish } from '../src/formatters.js';
 
 const filepath1 = path.resolve(__dirname, '..', '__fixtures__', 'file1.json');
 const filepath2 = path.resolve(__dirname, '..', '__fixtures__', 'file2.json');
@@ -54,9 +55,8 @@ const expectedDifference = `{
 
 const compareFiles = (path1, path2, expectedDiff) => {
     const result = gendiff(path1, path2);
-    // console.log('Expected Difference:', expectedDifference);
-    // console.log('Actual Result:', result);
-    expect(result).toEqual(expectedDiff);
+    const formattedResult = stylish(result);
+    expect(formattedResult).toEqual(expectedDiff);
 }
 describe('gendiff', () => {
     test('difference between file2 and file1', () =>  compareFiles(filepath1, filepath2, expectedDifference));
