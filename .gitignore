@@ -3,5 +3,9 @@ node_modules
 my.js
 my-hello.js
 demo.cast
+demo2.cast
+demoFormatPlain.cast
+demoPlainFormat.cast
+demoNestedObjects.cast
 cc-test-reporter
 coverage/

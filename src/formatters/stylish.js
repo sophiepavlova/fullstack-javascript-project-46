@@ -4,13 +4,11 @@ export const stylish = (diff) => {
     const baseIndentSize = 4;        // Indentation for normal (unchanged) top-level keys
     const markerIndentSize = 2;      // Indentation before markers ('+' or '-')
 
-    // Make an indent based on depth; markers have 2 spaces less than the full indent
     const makeIndent = (depth, isMarker = false) => {
         const indentLevel = depth * baseIndentSize;
         return isMarker ? ' '.repeat(indentLevel - markerIndentSize) : ' '.repeat(indentLevel);
     };
 
-    // Converts values to strings, handling objects recursively
     const stringify = (value, depth) => {
         if (!_.isObject(value) || value === null) {
             return String(value);
@@ -23,7 +21,7 @@ export const stylish = (diff) => {
 
     const iter = (node, depth) => {
         const lines = node.map(({ key, type, value, value1, value2, children }) => {
-            const normalIndent = makeIndent(depth);        // Regular indent for unchanged and nested keys
+            const normalIndent = makeIndent(depth);        // Regular indent 
             const markerIndent = makeIndent(depth, true);  // Adjusted indent for markers ('+' or '-')
 
             switch (type) {
@@ -45,6 +43,5 @@ export const stylish = (diff) => {
         return lines.join('\n');
     };
 
-    // Start from depth 1 to ensure proper indentation for top-level elements
     return `{\n${iter(diff, 1)}\n}`;
 };

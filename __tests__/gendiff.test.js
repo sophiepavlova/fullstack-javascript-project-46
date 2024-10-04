@@ -1,6 +1,5 @@
 import { gendiff } from '../bin/gendiff.js';
 import path from 'node:path';
-import { stylish } from '../src/formatters.js';
 
 const filepath1 = path.resolve(__dirname, '..', '__fixtures__', 'file1.json');
 const filepath2 = path.resolve(__dirname, '..', '__fixtures__', 'file2.json');
@@ -53,12 +52,27 @@ const expectedDifference = `{
     }
 }`;
 
-const compareFiles = (path1, path2, expectedDiff) => {
-    const result = gendiff(path1, path2);
-    const formattedResult = stylish(result);
-    expect(formattedResult).toEqual(expectedDiff);
+const expectedDifferencePlain = `
+Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`
+
+const compareFiles = (path1, path2, expectedDiff, format) => {
+    const result = gendiff(path1, path2,format);
+  
+    expect(result.trim()).toEqual(expectedDiff.trim());
 }
 describe('gendiff', () => {
-    test('difference between file2 and file1', () =>  compareFiles(filepath1, filepath2, expectedDifference));
-    test('difference between file2 and file1 in yml format', () =>  compareFiles(fileYmlpath1, fileYmlpath2, expectedDifference));
+    test('difference between file2 and file1 in json, format stylish', () =>  compareFiles(filepath1, filepath2, expectedDifference, 'stylish'));
+    test('difference between file2 and file1 in json, format plain', () =>  compareFiles(filepath1, filepath2, expectedDifferencePlain, 'plain'));
+    test('difference between file2 and file1 in yml, format stylish', () =>  compareFiles(fileYmlpath1, fileYmlpath2, expectedDifference, 'stylish'));
+    test('difference between file2 and file1 in yml, format plain', () =>  compareFiles(fileYmlpath1, fileYmlpath2, expectedDifferencePlain, 'plain'));
 });
