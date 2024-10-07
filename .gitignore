@@ -7,5 +7,6 @@ demo2.cast
 demoFormatPlain.cast
 demoPlainFormat.cast
 demoNestedObjects.cast
+demoJsonFormatAdded.cast
 cc-test-reporter
 coverage/

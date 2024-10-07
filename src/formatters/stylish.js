@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 export const stylish = (diff) => {
-    const baseIndentSize = 4;        // Indentation for normal (unchanged) top-level keys
-    const markerIndentSize = 2;      // Indentation before markers ('+' or '-')
+    const baseIndentSize = 4; //Indentation for normal (unchanged) top-level keys
+    const markerIndentSize = 2; //Indentation before markers ('+' or '-')
 
     const makeIndent = (depth, isMarker = false) => {
         const indentLevel = depth * baseIndentSize;
@@ -21,8 +21,8 @@ export const stylish = (diff) => {
 
     const iter = (node, depth) => {
         const lines = node.map(({ key, type, value, value1, value2, children }) => {
-            const normalIndent = makeIndent(depth);        // Regular indent 
-            const markerIndent = makeIndent(depth, true);  // Adjusted indent for markers ('+' or '-')
+            const normalIndent = makeIndent(depth); //Regular indent 
+            const markerIndent = makeIndent(depth, true); //Adjusted indent for markers ('+' or '-')
 
             switch (type) {
                 case 'added':
@@ -34,7 +34,7 @@ export const stylish = (diff) => {
                 case 'unchanged':
                     return `${normalIndent}${key}: ${stringify(value, depth)}`;
                 case 'nested':
-                    return `${normalIndent}${key}: {\n${iter(children, depth + 1)}\n${normalIndent}}`;  // Handle nested structures recursively
+                    return `${normalIndent}${key}: {\n${iter(children, depth + 1)}\n${normalIndent}}`;
                 default:
                     return '';
             }
