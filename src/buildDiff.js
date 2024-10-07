@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const buildDiff = (obj1, obj2, depth = 0) => {
+const buildDiff = (obj1, obj2) => {
     const keys = _.sortBy([ ... new Set([... Object.keys(obj1), ... Object.keys(obj2)])]);
 
     return keys.reduce((acc, key) => {

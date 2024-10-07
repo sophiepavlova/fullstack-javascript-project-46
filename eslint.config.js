@@ -10,6 +10,7 @@ export default [
         ...globals.jest,
       },
     },
+    ignores: ['coverage/**'],
   },
   pluginJs.configs.recommended,
 ];
