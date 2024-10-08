@@ -34,7 +34,6 @@ import _ from 'lodash';
         return lines.filter(line => line).join('\n');
     };
 
-    // Start from depth 1 to ensure proper indentation for top-level elements
     return iter(diff, '');
  };
 

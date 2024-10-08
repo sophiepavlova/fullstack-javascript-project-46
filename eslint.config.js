@@ -11,6 +11,9 @@ export default [
       },
     },
     ignores: ['coverage/**'],
+    "rules": {
+    "import/named": "off"
+  },
   },
   pluginJs.configs.recommended,
 ];
