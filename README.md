@@ -93,7 +93,6 @@ Check out these demos of the tool in action on Asciinema:
 4. [Using the Plain Format](https://asciinema.org/a/e1lxg9zPijC2WZ6gOCE8eXXF9)  
 5. [Using All Three Formats](https://asciinema.org/a/p4tCLRmWYUZzaBbmNa0fbskuS)
 
-Comparing Nested Structures
 ---
 
 ## 💡 Example Usage
