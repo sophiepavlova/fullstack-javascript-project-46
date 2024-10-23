@@ -1,4 +1,4 @@
-import gendiff from '../bin/gendiff.js';
+import gendiff from '../src/gendiff.js';
 import path from 'node:path';
 
 const filepath1 = path.resolve(__dirname, '..', '__fixtures__', 'file1.json');
