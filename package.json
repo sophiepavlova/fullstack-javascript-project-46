@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/sophiepavlova/fullstack-javascript-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sophiepavlova/fullstack-javascript-project-46/actions)",
+  "description": "This project creates a CLI utility, which allows to compare two files and displays the difference between them. The input formats are json amd yml, the output can be in stylish, plain or json format.",
   "type": "module",
   "bin": {
      "gendiff": "./bin/gendiff-cli.js"
