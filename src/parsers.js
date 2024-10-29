@@ -10,7 +10,6 @@ export const fileParse = (fileContent, extention) => {
         case '.yaml':
             return  yaml.load(fileContent);
         default:
-            console.log(extention);
             throw new Error(`Unsupported extension - ${extention}`)
     }
 };
