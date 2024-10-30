@@ -4,7 +4,7 @@
   "description": "This project creates a CLI utility, which allows to compare two files and displays the difference between them. The input formats are json amd yml, the output can be in stylish, plain or json format.",
   "type": "module",
   "bin": {
-     "gendiff": "./bin/gendiff-cli.js"
+    "gendiff": "./bin/gendiff-cli.js"
   },
   "main": "src/gendiff.js",
   "scripts": {
@@ -23,7 +23,9 @@
   "devDependencies": {
     "esbuild": "^0.24.0",
     "esbuild-jest": "^0.5.0",
-    "eslint": "^9.11.0",
+    "eslint": "^9.13.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.8.3",
     "globals": "^15.9.0",
     "jest": "^29.7.0"
   },
