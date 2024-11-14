@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import gendiff from '../src/gendiff.js';
+import { gendiff } from '../src/gendiff.js';
 
 const filePathAssemble = (filename) => path.resolve(__dirname, '..', '__fixtures__', filename);
 
