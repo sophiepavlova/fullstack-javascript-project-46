@@ -6,13 +6,17 @@ import getFormatter from './formatters/index.js';
 import fileParse from './parsers.js';
 
 function getFileData(filePath) {
-    const absolutePath = path.resolve(process.cwd(), filePath);
+    const absolutePath = resolveFilePath(filePath);
     const fileContent = fs.readFileSync(absolutePath, 'utf-8');
     const extention = path.extname(filePath);
     return { fileContent, extention };
 }
 
-const gendiff = (filePath1, filePath2, formatName = 'stylish') => {
+export function resolveFilePath(filename) {
+    return path.isAbsolute(filename) ? filename : path.resolve(process.cwd(), '__fixtures__', filename);
+}
+
+export const gendiff = (filePath1, filePath2, formatName = 'stylish') => {
     const { fileContent: content1, extention: extention1 } = getFileData(filePath1);
     const { fileContent: content2, extention: extention2 } = getFileData(filePath2);
 
@@ -25,4 +29,3 @@ const gendiff = (filePath1, filePath2, formatName = 'stylish') => {
     return format(diff);
 };
 
-export default gendiff;

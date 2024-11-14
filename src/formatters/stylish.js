@@ -1,24 +1,8 @@
 import _ from 'lodash';
 
+import { makeIndent, stringify } from '../utils.js';
+
 const stylish = (diff) => {
-    const baseIndentSize = 4; // Indentation for normal (unchanged) top-level keys
-    const markerIndentSize = 2; // Indentation before markers ('+' or '-')
-
-    const makeIndent = (depth, isMarker = false) => {
-        const indentLevel = depth * baseIndentSize;
-        return isMarker ? ' '.repeat(indentLevel - markerIndentSize) : ' '.repeat(indentLevel);
-    };
-
-    const stringify = (value, depth) => {
-        if (!_.isObject(value) || value === null) {
-            return String(value);
-        }
-        const lines = Object.entries(value).map(([key, val]) => {
-            return `${makeIndent(depth + 1)}${key}: ${stringify(val, depth + 1)}`;
-        });
-        return `{\n${lines.join('\n')}\n${makeIndent(depth)}}`;
-    };
-
     const iter = (node, depth) => {
         const lines = node.map(({ key, type, value, value1, value2, children }) => {
             const normalIndent = makeIndent(depth); // Regular indent
