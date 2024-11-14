@@ -2,8 +2,8 @@ import { formatValue} from '../utils.js';
 
 const plain = (diff) => {
     const iter = (node, parentPath) => {
-      const lines = node.map(({ key, type, value, value1, value2, children }) => {
-        const currentPath = parentPath ? `${parentPath}.${key}` : key;
+        const lines = node.map(({ key, type, value, value1, value2, children }) => {
+          const currentPath = parentPath ? `${parentPath}.${key}` : key;
           switch (type) {
             case 'added':
                 return `Property '${currentPath}' was added with value: ${formatValue(value)}`;

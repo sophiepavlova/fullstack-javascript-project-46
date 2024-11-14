@@ -29,3 +29,5 @@ export const gendiff = (filePath1, filePath2, formatName = 'stylish') => {
     return format(diff);
 };
 
+export default gendiff;
+
