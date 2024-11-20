@@ -5,4 +5,5 @@ const processSource = (source) => transform(source, {
   target: 'node14',
 }).then((result) => result.code);
 
-module.exports = { process: processSource };
+// module.exports = { process: processSource };
+exports.process = processSource;
