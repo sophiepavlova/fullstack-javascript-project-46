@@ -7,14 +7,14 @@ import fileParse from './parsers.js';
 
 export function resolveFilePath(filename) {
   return path.isAbsolute(filename) ? filename : path.resolve(process.cwd(), '__fixtures__', filename);
-};
+}
 
 function getFileData(filePath) {
   const absolutePath = resolveFilePath(filePath);
   const fileContent = fs.readFileSync(absolutePath, 'utf-8');
   const extention = path.extname(filePath);
   return { fileContent, extention };
-};
+}
 
 export const gendiff = (filePath1, filePath2, formatName = 'stylish') => {
   const { fileContent: content1, extention: extention1 } = getFileData(filePath1);

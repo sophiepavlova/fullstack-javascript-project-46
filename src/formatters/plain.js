@@ -3,7 +3,7 @@ import { formatValue } from '../utils.js';
 const plain = (diff) => {
   const iter = (node, parentPath) => {
     const lines = node.map(({
-      key, type, value, value1, value2, children
+      key, type, value, value1, value2, children,
     }) => {
       const currentPath = parentPath ? `${parentPath}.${key}` : key;
       switch (type) {
@@ -20,11 +20,10 @@ const plain = (diff) => {
       }
     });
 
-    return lines.filter(line => line).join('\n');
+    return lines.filter((line) => line).join('\n');
   };
 
   return iter(diff, '');
 };
 
 export default plain;
-

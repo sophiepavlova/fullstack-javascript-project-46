@@ -35,7 +35,7 @@ const baseConfig = {
 };
 const fileSpecificConfig = {
   files: ['src/formatters/plain.js', 'src/formatters/stylish.js', 'src/parsers.js'],
-  rules: {'indent': 'off',}
+  rules: { indent: 'off', }
 };
 
 const eslintConfig = [

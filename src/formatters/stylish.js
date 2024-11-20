@@ -3,8 +3,8 @@ import { makeIndent, stringify } from '../utils.js';
 const stylish = (diff) => {
   const iter = (node, depth) => {
     const lines = node.map(({
- key, type, value, value1, value2, children
-}) => {
+      key, type, value, value1, value2, children,
+    }) => {
       const normalIndent = makeIndent(depth); // Regular indent
       const markerIndent = makeIndent(depth, true); // Adjusted indent for markers ('+' or '-')
 
