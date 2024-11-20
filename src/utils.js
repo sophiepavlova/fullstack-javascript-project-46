@@ -4,12 +4,12 @@ const baseIndentSize = 4;
 const markerIndentSize = 2;
 
 export const formatValue = (value) => {
-  if (_.isObject(value)&& !Array.isArray(value)) {
+  if (_.isObject(value) && !Array.isArray(value)) {
     return '[complex value]';
   }
   if (typeof value === 'boolean') {
     return value.toString();
-  };
+  }
   if (value === null) return 'null';
   if (typeof value === 'string') return `'${value}'`;
   return String(value);
@@ -24,8 +24,6 @@ export const stringify = (value, depth) => {
   if (!_.isObject(value) || value === null) {
     return String(value);
   }
-  const lines = Object.entries(value).map(([key, val]) => {
-    return `${makeIndent(depth + 1)}${key}: ${stringify(val, depth + 1)}`;
-  });
+  const lines = Object.entries(value).map(([key, val]) => `${makeIndent(depth + 1)}${key}: ${stringify(val, depth + 1)}`);
   return `{\n${lines.join('\n')}\n${makeIndent(depth)}}`;
 };
