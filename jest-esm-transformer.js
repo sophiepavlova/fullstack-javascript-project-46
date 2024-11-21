@@ -6,4 +6,5 @@ const processSource = (source) => transform(source, {
 }).then((result) => result.code);
 
 // module.exports = { process: processSource };
+// eslint-disable-next-line
 exports.process = processSource;
